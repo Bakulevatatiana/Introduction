@@ -42,14 +42,17 @@ public class FirstSteps {
         }
 
 
-        public  int mul(int[] array) {
-            int sum = 1;
-            for (int i = 0; i < array.length; i++) {
-                sum = sum * array[i];
-            }
-            return sum;
+    public  int mul(int[] array) {
+        if (array.length == 0) {
+            return 0;
         }
+        int sum = 1;
+        for (int i = 0; i < array.length; i++) {
+            sum = sum * array[i];
+        }
+        return sum;
 
+    }
         public  int min(int[] array) {
             int min = Integer.MAX_VALUE;
             if (array == null) {
@@ -78,16 +81,17 @@ public class FirstSteps {
             return max;
         }
 
-        public  double average(int[] array) {
-            int sum = 0;
-            if (array == null) {
-                return 0;
-            }
-            for (int i = 0; i < array.length; i++) {
-                sum = sum + array[i];
-            }
-            return sum / array.length;
+    public  double average(int[] array) {
+        double sum = 0;
+        if (array == null) {
+            return 0;
         }
+        for (int i = 0; i < array.length; i++) {
+            sum = sum+ array[i];
+
+        }return sum / array.length;
+
+    }
 
 
         public  boolean isSortedDescendant(int[] array) {
@@ -95,7 +99,7 @@ public class FirstSteps {
                 return true;
             } else {
                 for (int i = 0; i < array.length - 1; i++) {
-                    if (array[i] >= array[i + 1]) {
+                    if (array[i] <= array[i + 1]) {
                         return false;
                     }
                 }
@@ -104,13 +108,12 @@ public class FirstSteps {
         }
 
 
-        public  void cube(int[] array) {
-            int sum = 0;
-            for (int i = 0; i < array.length; i++) {
-                sum = i * i;
-                System.out.println(sum);
-            }
+    public static void cube(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            array[i] = array[i] * array[i] * array[i];
+            System.out.println(array[i]);
         }
+    }
 
         public  boolean find(int[] array, int value) {
             for (int i = 0; i < array.length; i++) {
@@ -180,18 +183,16 @@ public class FirstSteps {
         }
 
 
-        public  boolean isSortedDescendant(int[][] matrix) {
-            if ((matrix.length == 0) || (matrix.length == 1)) {
-                return true;
-            } else {
-                for (int i = 0; i < matrix.length - 1; i++) {
-                    for (int j = 0; j < matrix[i].length - 1; j++) {
-                        if (matrix[i][j] <= matrix[i + 1][j + 1]) {
-                            return false;
-                        }
-                    }
+    public  boolean isSortedDescendant(int[][] matrix) {
+        if ((matrix.length == 0) || (matrix.length == 1)) {
+            return true;
+        } else {
+            for (int [] m : matrix) {
+                if (!isSortedDescendant(m)) {
+                    return false;
                 }
-                return true;
             }
         }
+        return true;
+    }
     }
